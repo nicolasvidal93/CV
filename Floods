@@ -1,1 +1,45 @@
+Modified Normalized Difference Water Index (MNDWI)
 
+//Create a geometry
+
+// Create image collection of S-2 imagery for the perdiod 2016-2018
+var S2 = ee.ImageCollection('COPERNICUS/S2')
+
+//filter start and end date
+.filterDate('2016-01-01', '2022-02-22')
+
+//filter according to drawn boundary
+.filterBounds(geometry);
+
+// Function to mask cloud from built-in quality band
+// information on cloud
+var maskcloud1 = function(image) {
+var QA60 = image.select(['QA60']);
+return image.updateMask(QA60.lt(1));
+};
+
+// Function to calculate and add an NDWI band
+var addNDWI = function(image) {
+return image.addBands(image.normalizedDifference(['B3', 'B11']));
+};
+
+// Add NDVI band to image collection
+var S2 = S2.map(addNDWI);
+
+// Extract NDWI band and create NDWI median composite image
+var NDWI = S2.select(['nd']);
+var NDWI = NDWI.median();
+
+// Create palettes for display of NDVI
+var ndvi_pal = ['#d73027', '#f46d43', '#fdae61', '#fee08b', '#d9ef8b',
+'#a6d96a'];
+
+// Display NDVI results on map
+Map.addLayer(NDWI.clip(geometry), {min:-0.5, max:0.9, palette: ndvi_pal}, 'NDWI');
+
+Export.image.toDrive({
+image: NDWI,
+description: 'NDWI',
+scale: 20, 
+region: geometry
+});
