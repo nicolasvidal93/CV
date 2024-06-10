@@ -1,2 +1,39 @@
 This repository contains scripts for the Google Earth Engine (GEE) platform, used for environmental risk studies. These codes have been essential for assessing and monitoring phenomena such as droughts, floods, and for the identification and classification of wetlands. Each script is designed to facilitate geospatial
 analysis through various indices and remote sensing techniques.
+
+Repository Contents
+Droughts: Scripts for monitoring and analyzing droughts using vegetation indices and other relevant parameters.
+Floods: Scripts for detecting and analyzing flooded areas using satellite imagery and remote sensing techniques.
+Wetlands: Scripts for identifying and classifying wetlands using water indices and classification techniques.
+
+Usage
+Requirements:
+An account on Google Earth Engine.
+Basic familiarity with JavaScript and the Google Earth Engine interface.
+
+How to Use the Scripts:
+Navigate to the subfolder corresponding to your topic of interest (Droughts, Floods, Wetlands).
+Open the desired .js file and copy its content.
+Paste the code into the code editor in the Google Earth Engine console.
+Adjust the parameters (such as dates, region of interest, etc.) according to your needs.
+Detailed Steps
+
+Access the Scripts:
+Go to the subfolder for your analysis (e.g., for drought monitoring, go to the [Droughts](Sequias/) folder).
+Open the Script:
+
+Find the script file that best fits your analysis needs. Each file is named descriptively to help you identify its function.
+Copy the Code:
+
+Copy the code from the script file. For instance, to monitor drought using the NDVI index, copy the code from drought_index.js.
+Paste into Google Earth Engine:
+
+Open the Google Earth Engine console at https://code.earthengine.google.com/.
+Create a new script or use an existing one and paste the copied code into the editor.
+Configure Parameters:
+
+Modify the script parameters to fit your study area and time frame. For example, adjust the filterDate range or change the geometry to your area of interest.
+Run the Script:
+
+Click the "Run" button in the Google Earth Engine console to execute the script.
+Visualize the results on the map and export data if needed.
